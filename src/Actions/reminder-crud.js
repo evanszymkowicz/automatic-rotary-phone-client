@@ -14,7 +14,7 @@ export const submitReminderSuccess = (reminder, currentUserId, reminderId) => ({
 })
 
 export const CRUD_ERROR = "CRUD_ERROR";
-expost const crudError = () => ({
+export const crudError = () => ({
   type: CRUD_ERROR,
 })
 

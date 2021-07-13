@@ -1,13 +1,13 @@
-export const SHOW_Userfile_FORM = 'SHOW_Userfile_FORM';
+export const SHOW_USERFILE_FORM = 'SHOW_USERFILE_FORM';
 export const showUserfileForm = (bool, currentUserfileFormId) => ({
-  type: SHOW_Userfile_FORM,
+  type: SHOW_USERFILE_FORM,
   bool,
   currentUserfileFormId
 });
 
-export const CHANGE_SORTING_UserS_METHOD = 'CHANGE_SORTING_UserS_METHOD';
+export const CHANGE_SORTING_USERS_METHOD = 'CHANGE_SORTING_USERS_METHOD';
 export const changeSortingUsersMethod = (sortMethod) => ({
-  type: CHANGE_SORTING_UserS_METHOD,
+  type: CHANGE_SORTING_USERS_METHOD,
   sortMethod
 });
 
@@ -15,7 +15,6 @@ export const TOGGLE_NAVBAR = "TOGGLE_NAVBAR";
 export const toggleNavbar = (bool) => ({
   type: TOGGLE_NAVBAR,
   bool
-  //lying about bool
 })
 
 export const CHANGE_CURRENT_User_ID = 'CHANGE_CURRENT_User_ID';
