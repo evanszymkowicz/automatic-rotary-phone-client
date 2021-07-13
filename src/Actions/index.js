@@ -15,11 +15,12 @@ export const TOGGLE_NAVBAR = "TOGGLE_NAVBAR";
 export const toggleNavbar = (bool) => ({
   type: TOGGLE_NAVBAR,
   bool
+  //lying about bool
 })
 
-export const CHANGE_CURRENT_User_ID = 'CHANGE_CURRENT_User_ID';
+export const CHANGE_CURRENT_USER_ID = 'CHANGE_CURRENT_USER_ID';
 export const changeCurrentUserId = (currentUserId) => ({
-  type: CHANGE_CURRENT_User_ID,
+  type: CHANGE_CURRENT_USER_ID,
   currentUserId
 })
 
@@ -54,4 +55,16 @@ export const CHANGE_CATEGORY_FILTER = "CHANGE_CATEGORY_FILTER";
 export const changeCategoryFilter = (categoryFilter) => ({
   type: CHANGE_CATEGORY_FILTER,
   categoryFilter
+})
+
+export const CRUD_ERROR = "CRUD_ERROR";
+export const crudError = (error) => ({
+  type: CRUD_ERROR,
+  error
+})
+
+export const LOADING_ANIMATION_TOGGLE = "LOADING_ANIMATION_TOGGLE";
+export const loadingAnimationToggle = (bool) => ({
+  type: LOADING_ANIMATION_TOGGLE,
+  bool
 })

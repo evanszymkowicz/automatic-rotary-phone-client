@@ -4,12 +4,10 @@ import {BrowserRouter as Router, Route} from 'react-router-dom'
 import {Redirect, Switch} from 'react-router-dom';
 
 import HomePage from './home/homepage';
-// import AutomaticRotaryPhonePage from './AutomaticRotaryPhonePage/AutomaticRotaryPhonePage';
 
 import {refreshAuthToken} from '../../actions/auth';
 
-export default class App extends React.Component {
-
+export class App extends React.Component {
   componentDidUpdate(prevProps) {
     if (!prevProps.loggedIn && this.props.loggedIn) {
       this.startPeriodicRefresh(); //  refresh the auth token periodically
