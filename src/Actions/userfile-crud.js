@@ -16,6 +16,8 @@ export const fetchUserfilesRequest = () => ({
 	type: FETCH_USERFILES_REQUEST,
 });
 
+
+//	TODO: Begin here for debugging
 export const fetchUserfiles = () => (dispatch, getState) => {
 	dispatch(fetchUserfilesRequest());
 	const authToken = getState().auth.authToken;
@@ -36,4 +38,4 @@ export const fetchUserfiles = () => (dispatch, getState) => {
 	});
 };
 
-//	My Post actions
+//	POST & PUT 

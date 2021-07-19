@@ -15,7 +15,6 @@ export const TOGGLE_NAVBAR = "TOGGLE_NAVBAR";
 export const toggleNavbar = (bool) => ({
   type: TOGGLE_NAVBAR,
   bool
-  //lying about bool
 })
 
 export const CHANGE_CURRENT_USER_ID = 'CHANGE_CURRENT_USER_ID';

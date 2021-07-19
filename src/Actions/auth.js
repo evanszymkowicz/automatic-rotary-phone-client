@@ -1,4 +1,4 @@
-import jwtDecode from "jwt-decode";
+import jwtDecode from 'jwt-decode';
 import {SubmissionError} from 'redux-form';
 
 import {API_BASE_URL} from '../config';
@@ -6,7 +6,6 @@ import { normalizeResponseErrors } from './utils';
 import {saveAuthToken, clearAuthToken} from '../local-storage';
 
 export const SET_AUTH_TOKEN = 'SET_AUTH_TOKEN';
-
 export const setAuthToken  = authToken => ({
 	type: SET_AUTH_TOKEN,
 	authToken
@@ -42,12 +41,19 @@ export const changeSuccessMessage = (message) => ({
 
 //	this will store the auth token in state and localStorage 
 //	user data stored in the token
-
 const storeAuthInfo = (authToken, dispatch) => {
+	const decodedToken = jwtDecode(authToken);
+	dispatch(setAuthToken(authToken));
+	dispatch(authSuccess(decodedToken.user));
+	saveAuthToken(authToken);
+	// dispatch(authRequest());
+};
+
+export const login = (username, password) => dispatch => {
 	dispatch(authRequest());
 	return (
-		fetch(`${API_BASE_URL}/LOGIN`, {
-			METHOD: 'POST',
+		fetch(`${API_BASE_URL}/login`, {
+			method: 'POST',
 			headers: {
 				'Content-Type': 'application/json'
 			},
@@ -58,23 +64,20 @@ const storeAuthInfo = (authToken, dispatch) => {
 		})
 		 // Reject any requests which don't return a 200 status creating errors which follow a consistent format
 		.then(res => normalizeResponseErrors(res))
-		.then(Res => res.json())
+		.then(res => res.json())
 		.then(({authToken}) => storeAuthInfo(authToken, dispatch))
 		.catch(err => {
 			const {status} = err;
-                const message =
-                    status === 401
-                        ? 'Incorrect username or password'
-                        : 'Unable to login, please try again';
-                dispatch(authError(err));
-                // Could not authenticate, so return a SubmissionError for Redux Form (this will be a general error that shows on top of form)
-                return Promise.reject(
-                    new SubmissionError({
-                        _error: message
-                    })
-                );
-            })
-    );
+      const message = status === 401 ? 'Incorrect username or password' : 'Unable to login, please try again';
+      dispatch(authError(err));
+      // Could not authenticate so it will return a ReduxForm Submission Error 
+      return Promise.reject(
+      	new SubmissionError({
+          _error: message
+				})
+		  );
+    })
+  );
 };
 
 export const refreshAuthToken = () => (dispatch, getState) => {
@@ -113,5 +116,5 @@ export const refreshProfileAuthToken = () => (dispatch, getState) => {
             dispatch(authError(err));
             dispatch(clearAuth());
             clearAuthToken(authToken);
-        });
+  });
 };
