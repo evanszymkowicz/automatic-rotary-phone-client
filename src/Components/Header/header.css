@@ -1,0 +1,45 @@
+
+.note{
+  display:block;
+  width:270px;
+  text-align: center;
+  padding:20px;
+  margin:25px auto;
+  font-size:15px;
+  color: #046306;
+  -webkit-box-shadow: 10px 10px 20px rgba(0,0,0,.5);
+  -moz-box-shadow: 10px 10px 20px rgba(0,0,0,.5);
+  box-shadow: 10px 10px 20px #000;
+  transition:.5s;
+  background-color: #fffd9b;
+}
+
+.note h1 {
+  font-family: 'Noto Sans', sans-serif;
+  color: #000;
+  text-shadow: black 1px 1px 0px;
+  text-align: center;
+  font-size:45px;
+}
+
+@media(min-width: 350px){
+  .note{
+    width: 300px;
+  }
+}
+
+@media(min-width: 500px){
+  .note{
+    width: 400px;
+  }
+
+  .note h1{
+    font-size: 70px;
+  }
+}
+
+@media(min-width: 900px){
+  .note{
+    width:450px;
+  }
+}

@@ -1,0 +1,25 @@
+.landing-page-main{
+  background-size: cover; 
+  color: white;
+  text-align: center;
+  padding-top: 60px;
+  display: flex;
+  min-height:100vh;
+  flex-direction: column;
+}
+
+.landing-page .form {
+  height: fit-content;
+  margin-top:20px;
+  margin-bottom:20px;
+}
+
+@media(min-width:950px){
+  .landing-page-main{
+    flex-direction: row;
+  }
+
+  .landing-page .form{
+    margin: 130px auto;
+  }
+}

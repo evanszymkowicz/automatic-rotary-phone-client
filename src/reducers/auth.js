@@ -1,6 +1,8 @@
 import { SET_AUTH_TOKEN, CLEAR_AUTH, AUTH_REQUEST, AUTH_SUCCESS_AUTH_ERROR, CHANGE_SUCCESS_MESSAGE } from "../actions/auth";
 import {UPDATED_USER_SUCCESS}	from '../actions/user-crud';
 
+//	TODO: This needs to be fixed before it can be validated with the be. Default init state will ignore for now.
+
 const initialState = {
 	authToken: null,
 	currentUser: null,

@@ -3,9 +3,11 @@ import {connect} from 'react-redux';
 import {BrowserRouter as Router, Route} from 'react-router-dom'
 import {Redirect, Switch} from 'react-router-dom';
 
-import HomePage from './home/homepage';
+import Header from './Header/header';
+import LandingPage from './LandingPage/landingpage';
 
-import {refreshAuthToken} from '../../actions/auth';
+
+import {refreshAuthToken} from '../actions/auth';
 
 export class App extends React.Component {
   componentDidUpdate(prevProps) {
@@ -38,8 +40,8 @@ export class App extends React.Component {
     return (
       <Router>
         <Switch>
-          <Route exact path="/" component={LandingPage}></Route>
-          <Route exact path="/home" component={HomePage}></Route>
+          <Route exact path="/" component={Header}></Route>
+          <Route exact path="/home" component={LandingPage}></Route>
           <Route exact path="/:userfileId" component={UserfilePage}></Route>  
           <Redirect exact from="*" to="/home" />
           {/* user will be redirected to home page if attempting to find a page that doesn't exist yet*/}

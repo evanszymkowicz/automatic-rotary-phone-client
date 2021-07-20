@@ -5,11 +5,11 @@ import './header.css';
 
 export function Header(props) {
 	return (
-		<header className="sticky">
+		<header className="note">
 			<h1 className="section">{props.firstName}'s Team</h1>
 		</header>
 	);
-}
+}                                                       
 
 const mapStateToProps = state => ({
 	firstName: state.auth.currentUser.firstName,
