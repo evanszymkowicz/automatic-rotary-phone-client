@@ -1,8 +1,8 @@
 import React from 'react';
 import { connect } from "react-redux";
-import {Link} from 'react-router-dom';
-import {toggleNavbar} from '../actions/index';
-import './main.css';
+import { HashLink as Link } from 'react-router-hash-link';
+import {toggleNavbar} from '../../actions/index';
+import './navbar.css';
 
 export class Nav extends React.Component {
   componentWillUnmount(){
@@ -12,6 +12,7 @@ export class Nav extends React.Component {
   render() {
     let className = this.props.toggleNavbar ? "show link" : "dont show link";
     return( 
+      
       <nav className="navbar-main">
         <Link className="logo" to="/home">Roledex</Link>
         <button onClick={()=>this.props.dispatch(toggleNavbar())} className="icon right"><i className="fa fa-bars"></i></button>
@@ -27,7 +28,7 @@ export class Nav extends React.Component {
 }
 
 const mapStateToProps = (state) => ({
-  toggleNavbar: state.pawfile.toggleNavbar,
+  toggleNavbar: state.userfile.toggleNavbar,
 });
 
-export default connect(mapStateToProps)(Navbar);
+export default connect(mapStateToProps)(Nav);

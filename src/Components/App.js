@@ -42,7 +42,6 @@ export class App extends React.Component {
         <Switch>
           <Route exact path="/" component={Header}></Route>
           <Route exact path="/home" component={LandingPage}></Route>
-          <Route exact path="/:userfileId" component={UserfilePage}></Route>  
           <Redirect exact from="*" to="/home" />
           {/* user will be redirected to home page if attempting to find a page that doesn't exist yet*/}
         </Switch>

@@ -37,7 +37,7 @@ export const submitReminder = (values, currentUserId, reminderId) => dispatch =>
       }
       return res.json();
     }).then(reminder => {
-      console.log('in actions, got back pawfile:', reminder);
+      console.log('in actions, got back userfile:', reminder);
       dispatch(submitReminderSuccess(reminder, currentUserId, reminderId));
     }).catch(err => {
       dispatch(crudError(err));

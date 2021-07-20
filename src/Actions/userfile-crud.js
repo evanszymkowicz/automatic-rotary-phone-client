@@ -83,7 +83,7 @@ export const submitUserfile = (values, currentUserId) => (dispatch, getState) =>
 		.then(res => res.json())
 		.then(userfile => {
 			console.log('returning userfile...', userfile)
-			dispatch(userfileSuccess(userfile, currentUserId));
+			dispatch(submitUserfileSuccess(userfile, currentUserId));
 		}).catch(err => {
       dispatch(crudError("An error has occured. Please try refreshing!"));
       const {message, location, status} = err;
@@ -120,7 +120,7 @@ export const deleteUserfileRequest = () => ({
 export const deleteUserfile = (currentUserId) => (dispatch, getState) => {
 	dispatch(deleteUserfileRequest());
 	const authToken = getState().auth.authToken;
-	fetchfetch(`${API_BASE_URL}/userfiles/${currentUserId}`, {
+	fetch(`${API_BASE_URL}/userfiles/${currentUserId}`, {
 		method: "DELETE",
 		headers: {
 		'Accept': 'application/json',

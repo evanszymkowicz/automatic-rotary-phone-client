@@ -1,4 +1,4 @@
-import { SHOW_USERFILE_FORM, SHOW_UPDATE_PHOTO_FORM, CHANGE_SORTING_USERS_METHOD, LOADING_ANIMATION_TOGGLE } from "../actions/index";
+import { SHOW_USERFILE_FORM, SHOW_UPDATE_PHOTO_FORM, CHANGE_SORTING_USERS_METHOD, LOADING_ANIMATION_TOGGLE, TOGGLE_NAVBAR, CHANGE_CURRENT_USER_ID, SHOW_REMIDNER_FORM, CHANGE_CATEGORY_FILTER, CHANGE_SEARCH_TERM, CRUD_ERROR, SHOW_REMINDER_FORM } from "../actions/index";
 import {SUBMIT_REMINDER_REQUEST, SUBMIT_REMINDER_SUCCESS, DELETE_REMINDER_REQUEST, DELETE_REMINDER_SUCCESS} from '../actions/reminder-crud';
 import {SUBMIT_POST_REQUEST, SUBMIT_POST_SUCCESS, DELETE_POST_REQUEST, DELETE_POST_SUCCESS} from '../actions/post-crud';
 import {FETCH_USERFILES_SUCCESS, FETCH_USERFILES_REQUEST, SUBMIT_USERFILE_REQUEST, SUBMIT_USERFILE_SUCCESS, DELETE_USERFILE_REQUEST, DELETE_USERFILE_SUCCESS} from '../actions/userfile-crud'
@@ -46,13 +46,13 @@ export const userfileReducer = (state = initialState, action) => {
     })
   }
 
-  else if(action.type===CHANGE_CURRENT_PET_ID){
+  else if(action.type===CHANGE_CURRENT_USER_ID){
     return Object.assign({}, state, {
       currentUserId: action.currentUserId,
     })
   }
 
-  else if (action.type=== CHANGE_SORTING_PETS_METHOD){
+  else if (action.type=== CHANGE_SORTING_USERS_METHOD){
     return Object.assign({}, state, {
       sortingUsersMethod: action.sortMethod,
     })
@@ -69,24 +69,10 @@ export const userfileReducer = (state = initialState, action) => {
     })
   }
 
-  else if(action.type===SHOW_REMINDER_FORM){
+  else if(action.type === SHOW_REMINDER_FORM){
     return Object.assign({}, state, {
       showReminderForm: action.bool,
       currentReminderId: action.currentReminderId,
-    })
-  }
-
-  else if(action.type===SHOW_MEDICAL_FORM){
-    return Object.assign({}, state, {
-      showMedicalForm: action.bool,
-      currentPostId: action.currentPostId,
-    })
-  }
-
-  else if(action.type===SHOW_MEMORY_FORM){
-    return Object.assign({}, state, {
-      showMemoryForm: action.bool,
-      currentPostId: action.currentPostId,
     })
   }
 
@@ -181,7 +167,7 @@ export const userfileReducer = (state = initialState, action) => {
   }
 
   // FOR REMINDER: 
-  else if (action.type===SUBMIT_REMINDER_REQUEST){
+  else if (action.type === SUBMIT_REMINDER_REQUEST){
     return Object.assign({}, state, {
       loadPending: true,
       error: null
@@ -190,19 +176,19 @@ export const userfileReducer = (state = initialState, action) => {
 
   else if (action.type=== SUBMIT_REMINDER_SUCCESS){
     //figure out which userfile I need to updated 
-    let userfileToUpdate = {...state.userfiles.find(userfile=> userfile.id==action.currentUserId)};
+    let userfileToUpdate = {...state.userfiles.find(userfile=> userfile.id===action.currentUserId)};
 
     //if I'm editing a reminder: 
     if(action.reminderId){
       let reminderToUpdate = action.reminder;
-      userfileToUpdate.reminders = userfileToUpdate.reminders.map((reminder)=> (reminder.id==action.reminderId ? reminderToUpdate : reminder))
+      userfileToUpdate.reminders = userfileToUpdate.reminders.map((reminder)=> (reminder.id===action.reminderId ? reminderToUpdate : reminder))
     }
     //if I'm adding a reminder: 
     else{
       userfileToUpdate.reminders = [...userfileToUpdate.reminders, action.reminder];
     }
 
-    const newArrayOfUserfiles = state.userfiles.map((item)=> (item.id==action.currentUserId ? userfileToUpdate : item))
+    const newArrayOfUserfiles = state.userfiles.map((item)=> (item.id===action.currentUserId ? userfileToUpdate : item))
 
     return Object.assign({}, state, {
         loadPending: false, 
@@ -219,10 +205,10 @@ export const userfileReducer = (state = initialState, action) => {
   }
 
   else if(action.type=== DELETE_REMINDER_SUCCESS){
-    let userfileToUpdate = {...state.userfiles.find(userfile=> userfile.id==action.currentUserId)};
+    let userfileToUpdate = {...state.userfiles.find(userfile=> userfile.id===action.currentUserId)};
     const updatedReminders = userfileToUpdate.reminders.filter((reminder)=> (reminder.id!==action.reminderId));
     userfileToUpdate.reminders=updatedReminders;
-    const newArrayOfUserfiles = state.userfiles.map((item)=> (item.id==action.currentUserId ? userfileToUpdate : item))
+    const newArrayOfUserfiles = state.userfiles.map((item)=> (item.id===action.currentUserId ? userfileToUpdate : item))
 
     return Object.assign({}, state, {
       userfiles: newArrayOfUserfiles,
@@ -241,19 +227,19 @@ export const userfileReducer = (state = initialState, action) => {
 
   else if (action.type=== SUBMIT_POST_SUCCESS){
     // userfile join on current userid
-    let userfileToUpdate = {...state.userfiles.find(userfile=> userfile.id==action.currentUserId)};
+    let userfileToUpdate = {...state.userfiles.find(userfile=> userfile.id===action.currentUserId)};
 
     //	editing post
     if(action.postId){
       let postToUpdate = action.post;
-      userfileToUpdate.posts = userfileToUpdate.posts.map((post)=> (post.id==action.postId ? postToUpdate : post))
+      userfileToUpdate.posts = userfileToUpdate.posts.map((post)=> (post.id===action.postId ? postToUpdate : post))
     }
     // adding a post
     else{
       userfileToUpdate.posts = [...userfileToUpdate.posts, action.post];
     }
 
-    const newArrayOfUserfiles = state.userfiles.map((item)=> (item.id==action.currentUserId ? userfileToUpdate : item))
+    const newArrayOfUserfiles = state.userfiles.map((item)=> (item.id===action.currentUserId ? userfileToUpdate : item))
     return Object.assign({}, state, {
         loadPending: false,
         userfiles: newArrayOfUserfiles,
@@ -268,10 +254,10 @@ export const userfileReducer = (state = initialState, action) => {
   }
 
   else if(action.type=== DELETE_POST_SUCCESS){
-    let userfileToUpdate = {...state.userfiles.find(userfile=> userfile.id==action.currentUserId)};
+    let userfileToUpdate = {...state.userfiles.find(userfile=> userfile.id===action.currentUserId)};
     const updatedPosts = userfileToUpdate.posts.filter((post)=> (post.id!==action.postId));
     userfileToUpdate.posts=updatedPosts;
-    const newArrayOfUserfiles = state.userfiles.map((item)=> (item.id==action.currentUserId ? userfileToUpdate : item))
+    const newArrayOfUserfiles = state.userfiles.map((item)=> (item.id===action.currentUserId ? userfileToUpdate : item))
 
     return Object.assign({}, state, {
       userfiles: newArrayOfUserfiles,
