@@ -5,17 +5,24 @@ export const showUserfileForm = (bool, currentUserfileFormId) => ({
   currentUserfileFormId
 });
 
+export const TOGGLE_NAVBAR = "TOGGLE_NAVBAR";
+export const toggleNavbar = (bool) => ({
+  type: TOGGLE_NAVBAR,
+  bool
+});
+
+export const SHOW_UPDATE_PHOTO_FORM = 'SHOW_UPDATE_PHOTO_FORM';
+export const showUpdatePhotoForm = (bool, currentUserfileFormId) => ({
+  type: SHOW_UPDATE_PHOTO_FORM,
+  bool,
+  currentUserfileFormId
+});
+
 export const CHANGE_SORTING_USERS_METHOD = 'CHANGE_SORTING_USERS_METHOD';
 export const changeSortingUsersMethod = (sortMethod) => ({
   type: CHANGE_SORTING_USERS_METHOD,
   sortMethod
 });
-
-export const TOGGLE_NAVBAR = "TOGGLE_NAVBAR";
-export const toggleNavbar = (bool) => ({
-  type: TOGGLE_NAVBAR,
-  bool
-})
 
 export const CHANGE_CURRENT_USER_ID = 'CHANGE_CURRENT_USER_ID';
 export const changeCurrentUserId = (currentUserId) => ({
@@ -23,16 +30,9 @@ export const changeCurrentUserId = (currentUserId) => ({
   currentUserId
 })
 
-export const SHOW_MEDICAL_FORM = "SHOW_MEDICAL_FORM";
-export const showMedicalForm = (bool, currentPostId) => ({
-  type: SHOW_MEDICAL_FORM,
-  bool,
-  currentPostId
-})
-
-export const SHOW_MEMORY_FORM = "SHOW_MEMORY_FORM";
+export const SHOW_POST_FORM = "SHOW_POST_FORM";
 export const showMemoryForm = (bool, currentPostId) => ({
-  type: SHOW_MEMORY_FORM,
+  type: SHOW_POST_FORM,
   bool,
   currentPostId
 })

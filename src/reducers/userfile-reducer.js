@@ -1,6 +1,7 @@
-import { SHOW_USERFILE_FORM, SHOW_UPDATE_PHOTO_FORM, CHANGE_SORTING_USERS_METHOD, LOADING_ANIMATION_TOGGLE } from "../actions";
+import { SHOW_USERFILE_FORM, SHOW_UPDATE_PHOTO_FORM, CHANGE_SORTING_USERS_METHOD, LOADING_ANIMATION_TOGGLE } from "../actions/index";
 import {SUBMIT_REMINDER_REQUEST, SUBMIT_REMINDER_SUCCESS, DELETE_REMINDER_REQUEST, DELETE_REMINDER_SUCCESS} from '../actions/reminder-crud';
 import {SUBMIT_POST_REQUEST, SUBMIT_POST_SUCCESS, DELETE_POST_REQUEST, DELETE_POST_SUCCESS} from '../actions/post-crud';
+import {FETCH_USERFILES_SUCCESS, FETCH_USERFILES_REQUEST, SUBMIT_USERFILE_REQUEST, SUBMIT_USERFILE_SUCCESS, DELETE_USERFILE_REQUEST, DELETE_USERFILE_SUCCESS} from '../actions/userfile-crud'
 
 const initialState = {
 	sortingUsersMethod: "",
@@ -140,7 +141,7 @@ export const userfileReducer = (state = initialState, action) => {
 
 
       const newArrayOfUserfiles = state.userfiles.map((item)=> {
-        return (item.id==action.currentUserId ? updatedUserfile : item);
+        return (item.id===action.currentUserId ? updatedUserfile : item);
       })
   
       return Object.assign({}, state, {
@@ -276,6 +277,7 @@ export const userfileReducer = (state = initialState, action) => {
       userfiles: newArrayOfUserfiles,
       loadPending: false,
       error: null
-    })
-		return state;
+    });
   }
+	return state;
+}
