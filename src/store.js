@@ -7,7 +7,8 @@ import {loadAuthToken} from './local-storage';
 import authReducer from './reducers/auth';
 import {setAuthToken, refreshAuthToken} from './actions/auth';
 
-const store = createStore(
+
+const store = createStore (
   combineReducers({
     form: formReducer,
     auth: authReducer,
@@ -15,7 +16,6 @@ const store = createStore(
   }),
   applyMiddleware(thunk),
 );
-
 
 //  ensure that the app is properly hydrated
 const authToken = loadAuthToken();

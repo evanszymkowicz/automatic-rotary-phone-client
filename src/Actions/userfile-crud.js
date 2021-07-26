@@ -63,7 +63,7 @@ export const submitUserfile = (values, currentUserId) => (dispatch, getState) =>
     }
     });
     for (let pair of formData.entries()) {
-        // console.log('DATA', pair[0]+ ', ' + pair[1]); 
+        console.log('DATA', pair[0]+ ', ' + pair[1]); 
     }
 		const method = currentUserId ? "PUT" : "POST";
 		const path = currentUserId ? `${API_BASE_URL}/userfiles/${currentUserId}` : `${API_BASE_URL}/userfiles`;
