@@ -1,8 +1,12 @@
 import React from 'react';
+import Nav from '../Navbar/navbar';
+import Footer from '../Footer/footer';
+
 import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 
-import Nav from './navbar'
+import BriefAbout from './briefabout';
+import LoginForm from './login-form';
 
 import './landing-page.css';
 
@@ -16,11 +20,12 @@ export function LandingPage(props) {
     <div className="landing-page">
 		  <Nav />
         <main className="landing-page-main">
-        
-          </main>
-       
-        </div>
-    );
+					<BriefAbout />
+					<LoginForm />
+        </main>
+			<Footer	/>
+    </div>
+  );
 }
 
 const mapStateToProps = state => ({

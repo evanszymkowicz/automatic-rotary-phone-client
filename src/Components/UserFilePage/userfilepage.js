@@ -1,7 +1,18 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import { changeCategoryFilter, changeCurrentUserId, changeSearchTerm, showMemoryForm, showUserfileForm } from '../../actions';
 import Nav from '../Navbar/navbar';
+import Footer from '../Footer/footer';
+import Sidebar from './sidebar';
+import MainSection from './main-section';
+import UserfileForm from '../userfile-form';
+import UpdatePhotoForm from '../update-photo-form';
+import ReminderForm from './reminder-form';
+import PostForm from './post-form';
+
+import { showPostForm, showReminderForm, changeSearchTerm, changeCategoryFilter, changeCurrentUserId } from '../../actions/index';
+import { fetchUserfiles } from '../../actions/userfile-crud';
+import {changeSuccessMessage} from '../../actions/auth';
+import requiresLogin from '../requires-login';
 
 export default class UserfilePage extends React.Component {
 	componentDidMount() {
@@ -14,7 +25,7 @@ export default class UserfilePage extends React.Component {
 	componentWillUnmount() {
 		//	returns to the default when this component unmounts
 		this.props.dispatch(showUserfileForm(false));
-		this.props.dispatch(showMemoryForm(false));
+		this.props.dispatch(showPostForm(false));
 		this.props.dispatch(changeSearchTerm(""));
 		this.props.dispatch(changeCategoryFilter(""));
 	}
@@ -40,7 +51,7 @@ export default class UserfilePage extends React.Component {
         <MainSection id={this.props.match.params.userfileId}/>
 					{this.props.showUserfileForm && <UserfileForm/>} 
 					{this.props.showUpdatePhotoForm && <UpdatePhotoForm/>} 
-					{this.props.showMemoryForm && <MemoryForm/>}
+					{this.props.showPostForm && <PostForm/>}
         <Footer/>
 			</div>
 		);

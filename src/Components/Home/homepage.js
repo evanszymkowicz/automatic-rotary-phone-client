@@ -3,6 +3,7 @@ import {connect} from 'react-redux';
 import Nav from '../Navbar/navbar';
 import Footer from '../Footer/footer';
 import MyFiles from './my-userfiles';
+
 import { changeSortingUsersMethod } from '../../actions/index';
 import { fetchUserfiles } from '../../actions/userfile-crud';
 import { changeSuccessMessage } from '../../actions/auth';

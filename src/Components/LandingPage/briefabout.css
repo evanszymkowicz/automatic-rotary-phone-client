@@ -1,0 +1,75 @@
+.brief-about{
+  background-color:rgba(255, 255, 255, .7);
+  color: black;
+  width: 270px;
+  padding: 20px;
+  margin: auto;
+  display: flex;
+  margin-top:20px;
+}
+
+.brief-about h1{
+  font-family: "Courier New",monospace;
+  font-size:70px;
+}
+
+.brief-about h3{
+  font-family: "Courier New",monospace;
+  font-size:40px;
+  text-decoration: underline;
+}
+
+.brief-about p, .brief-about li{
+  font-size: 20px;
+  line-height: 1.7;
+  font-family: "Courier New",monospace;
+  padding:20px;
+  text-shadow: black .5px .5px 0px;
+}
+
+.brief-about ul{
+  list-style: none;
+}
+
+.brief-about li{
+  padding:5px;
+  text-align: left;
+  padding-left:20px;
+}
+
+.brief-about li:before {    
+  font-family: "Font Awesome 5 Free"; 
+  font-size:15px;
+  font-weight: 900; 
+  content: "\f1b0";
+  margin-right: 10px;
+}
+
+@media(min-width: 350px){
+  .brief-about{
+    width: 300px;
+  }
+}
+
+@media(min-width: 500px){
+
+  .brief-about{
+    width: 400px;
+  }
+}
+
+@media(min-width: 900px){
+  .brief-about{
+    width:450px;
+  }
+}
+
+@media(min-width:950px){
+  .brief-about{
+    margin:0;
+  }
+
+  .brief-about{
+    width:600px;
+  }
+}
